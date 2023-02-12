@@ -1,15 +1,16 @@
-﻿int programm, num;
-Boolean begin = true;
+﻿  // Задача 2: Напишите программу, которая на вход принимает два числа и выдаёт, какое число большее, а какое меньшее.
 
-while (begin)
-{
-    Console.WriteLine("------");
-    Console.WriteLine("Введите число для соответствующей задачи или иное для выхода:");
-    Console.WriteLine("1. На вход принимает два числа и выдаёт, какое число большее, а какое меньшее.");
-    Console.WriteLine("2. Принимает на вход три числа и выдаёт максимальное из этих чисел.");
-    Console.WriteLine("3. На вход принимает число и выдаёт, является ли число чётным (делится ли оно на два без остатка).");
-    Console.WriteLine("4. На вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.");
-    programm = Convert.ToInt32(Console.ReadLine());
-    
-    switch (programm)
-   
+            Console.WriteLine("Введите первое число: ");
+            int num_A = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Введите второе число: ");
+            int num_B = Convert.ToInt32(Console.ReadLine());
+
+            if (num_A > num_B)
+            {
+                Console.WriteLine("Первое число " + num_A + " больше чем второе " + num_B);
+            }
+            else
+            {
+                Console.WriteLine("Второе число " + num_B + " больше чем первое " + num_A);
+            }
