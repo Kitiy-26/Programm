@@ -1,22 +1,29 @@
 ﻿/*
-Задача 23
-Напишите программу, которая принимает на вход число (N) и выдаёт таблицу кубов чисел от 1 до N.
-3 -> 1, 8, 27
-5 -> 1, 8, 27, 64, 125
+Задача 25: (branch task_1)
+Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
 */
 
-int number = ReadInt("Введите число N: ");
+int numberA = ReadInt("Введите число A: ");
+int numberB = ReadInt("Введите число B: ");
+ToDegree(numberA, numberB);
 
-for (int i = 1; i <= number; i++)
-{ 
- Console.Write($"{i*i*i} ");
+
+// Функция возведения в степень
+void ToDegree(int a, int b)
+{
+ int result = 1;
+ for (int i = 1; i <= b; i++)
+    {
+ result = result * a;
+    }
+ Console.WriteLine(result);
 }
 
-
-
-// Функция ввода сообщения
+// Функция ввода
 int ReadInt(string message)
 {
- Console.Write(message);
+ Console.WriteLine(message);
  return Convert.ToInt32(Console.ReadLine());
 }
