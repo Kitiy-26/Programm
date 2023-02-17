@@ -1,23 +1,29 @@
-﻿            // Задача 8: Напишите программу, которая на вход принимает число (N), а на выходе показывает все чётные числа от 1 до N.
+﻿// Задача 10: Напишите программу, которая принимает на вход трёхзначное число и на выходе показывает вторую цифру этого числа.
 
-            int i = 1;
-            bool not = true;
+int number = ReadInt("Введите трехзначное число: ");
+int amount = number.ToString().Length;
 
-            Console.WriteLine("Введите число:");
-           int num = Convert.ToInt32(Console.ReadLine());
+if (amount < 3 || amount > 3)
+{
+ Console.WriteLine("Вы ввели не трехзначное число");
+}
+else
+{
+ Console.WriteLine(InCenter(number));
+}
+// ФУНКЦИИ------------------------------------------------------------------------------------------------------
 
-            Console.WriteLine("Чётные числа от 1 до " + num);
-            while (i <= num)
-            {
-                if (i % 2 != 1)
-                {
-                    Console.Write(i + ", ");
-                    not = false;
-                }
-                i++;
-            }
+// Функция принимает сообщение для отображения в консоли, и выводит результат введенных данных пользователем. 
+int ReadInt(string message)
+{
+ Console.Write(message);
+ return Convert.ToInt32(Console.ReadLine());
+}
 
-            if (not)
-            {
-                Console.WriteLine("Нет чётных чисел!");
-            }
+// Функция вывода цифры стоящей в середине трехзначногно числа.
+int InCenter(int a)
+{
+    
+ int result = ((a / 10) % 10);
+ return result;
+}
