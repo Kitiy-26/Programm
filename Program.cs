@@ -1,39 +1,19 @@
-﻿// Задача 62. Напишите программу, которая заполнит спирально массив 4 на 4.
-Console.WriteLine("Введите размер массива");
-int size = Convert.ToInt32(Console.ReadLine());
+﻿// Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
+int n = InputNumbers("Введите n: ");
+int count = 2;
+PrintNumber(n, count);
+Console.Write(1);
 
-int[,] nums = new int[size, size];
-
-int num = 1;
-int i = 0;
-int j = 0;
-
-while (num <= size * size)
+void PrintNumber(int n, int count)
 {
-    nums[i, j] = num;
-    if (i <= j + 1 && i + j < size - 1)
-        ++j;
-    else if (i < j && i + j >= size - 1)
-        ++i;
-    else if (i >= j && i + j > size - 1)
-        --j;
-    else
-        --i;
-    ++num;
+  if (count > n) return;
+  PrintNumber(n, count + 1);
+  Console.Write(count + ", ");
 }
 
-PrintArray(nums);
-
-void PrintArray(int[,] array)
+int InputNumbers(string input) 
 {
-    for (int i = 0; i < array.GetLength(0); i++)
-    {
-        Console.Write("[ ");
-        for (int j = 0; j < array.GetLength(1); j++)
-        {
-            Console.Write(array[i, j] + " ");
-        }
-        Console.Write("]");
-        Console.WriteLine("");
-    }
+  Console.Write(input);
+  int output = Convert.ToInt32(Console.ReadLine());
+  return output;
 }
