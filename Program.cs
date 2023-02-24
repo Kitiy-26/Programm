@@ -1,23 +1,36 @@
-﻿/*
-Задача 29: (branch task_3)
-Напишите программу, которая задаёт массив из N элементов и выводит их на экран.
-5 -> [1, 2, 5, 7, 19]
-3 -> [6, 1, 33]
-*/
+﻿Console.WriteLine("Введите длину массива:  ");
+int size = Convert.ToInt32(Console.ReadLine());
+int[] numbers = new int[size];
+RandonNumbers(numbers);
+Console.WriteLine("В этом массиве: ");
+PrintArray(numbers);
 
-int lenArray = ReadInt("Введите длинну массива: ");
-
-int[] randomArray = new int[lenArray];
-for (int i = 0; i < randomArray.Length; i++)
+void RandonNumbers(int[] numbers)
 {
- randomArray[i] = new Random().Next(1,9);
- Console.Write(randomArray[i] + " ");
+    for(int i = 0; i < size; i++)
+    {
+        numbers[i] = new Random().Next(100,1000);
+    }
 }
 
 
-// Функция ввода
-int ReadInt(string message)
+int count = 0;
+
+for (int x = 0; x < numbers.Length; x++)
 {
- Console.Write(message);
- return Convert.ToInt32(Console.ReadLine());
+if (numbers[x] % 2 == 0)
+count++;
+}
+Console.WriteLine($"из {numbers.Length} чисел, {count} четных");
+
+
+void PrintArray(int[] numbers)
+{
+    Console.Write("[ ");
+    for(int i = 0; i < numbers.Length; i++)
+    {
+        Console.Write(numbers[i] + " ");
+    }
+    Console.Write("]");
+    Console.WriteLine();
 }
