@@ -1,44 +1,66 @@
-﻿// Задача 38: Задайте с клавиатуры массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива. Задать размер массива с клавиатуры
-// [3 7 22 2 78] => 76
+﻿// Пользователь вводит с клавиатуры M чисел. Посчитайте, сколько чисел больше 0 ввёл пользователь.
+// 0, 7, 8, -2, -2 -> 2
+// 1, -7, 567, 89, 223-> 3
 
-Console.WriteLine("Введите размер массива  ");
-int size = Convert.ToInt32(Console.ReadLine());
-double[] numbers = new double[size];
-FillArrayRandomNumbers(numbers);
-Console.WriteLine("массив: ");
+Console.Write("Введите числа через запятую: ");
+int[] numbers = StringToNum(Console.ReadLine());
 PrintArray(numbers);
-double min = Int32.MaxValue;
-double max = Int32.MinValue;
-
-for (int z = 0; z < numbers.Length; z++)
+int sum = 0;
+for (int i = 0; i < numbers.Length; i++)
 {
-    if (numbers[z] > max)
+    if (numbers[i] > 0)
+    {
+        sum++;
+    }
+}
+Console.WriteLine();
+Console.WriteLine($"количество значений больше 0 = {sum}");
+
+
+int[] StringToNum(string input)
+{
+    int count = 1;
+    for (int i = 0; i < input.Length; i++)
+    {
+        if (input[i] == ',')
         {
-            max = numbers[z];
+            count++;
         }
-    if (numbers[z] < min)
+    }
+
+    int[] numbers = new int [count];
+    int index = 0;
+
+    for (int i = 0; i < input.Length; i++)
+    {
+        string temp = "";
+
+        while (input [i] != ',')
         {
-            min = numbers[z];
+        if(i != input.Length - 1)
+        {
+            temp += input [i].ToString();
+            i++;
         }
+        else
+        {
+            temp += input [i].ToString();
+            break;
+        }
+        }
+        numbers[index] = Convert.ToInt32(temp);
+        index++;
+    }
+    return numbers;
 }
 
-Console.WriteLine($"всего {numbers.Length} чисел. Максимальное значение = {max}, минимальное значение = {min}");
-Console.WriteLine($"Разница между максимальным и минимальным значением = {max - min}");
 
-void FillArrayRandomNumbers(double[] numbers)
-{
-    for(int i = 0; i < numbers.Length; i++)
-        {
-            numbers[i] = Convert.ToDouble(new Random().Next(100,1000)) / 100;
-        }
-}
-void PrintArray(double[] numbers)
+void PrintArray(int[] array)
 {
     Console.Write("[ ");
-    for(int i = 0; i < numbers.Length; i++)
-        {
-            Console.Write(numbers[i] + " ");
-        }
+    for (int i = 0; i < array.Length; i++)
+    {
+        Console.Write(array[i] + " ");
+    }
     Console.Write("]");
-    Console.WriteLine();
 }
