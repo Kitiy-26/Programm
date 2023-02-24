@@ -1,28 +1,11 @@
-﻿// Задача 56: Задайте прямоугольный двумерный массив. Напишите программу, которая будет находить строку с наименьшей суммой элементов.
+﻿// Задача 58: Задайте две матрицы. Напишите программу, которая будет находить произведение двух матриц
 
-Console.WriteLine("введите размер квадратного массива");
-int massVol = Convert.ToInt32(Console.ReadLine());
-int[,] numbers = new int[massVol, massVol];
-FillArrayRandomNumbers(numbers);
-PrintArray(numbers);
-int minsum = Int32.MaxValue;
-int indexLine = 0;
 
-for (int i = 0; i < numbers.GetLength(0); i++)
+    int InputInt(string output)
 {
-    int sum = 0;
-    for (int j = 0; j < numbers.GetLength(1); j++)
-    {
-        sum = sum + numbers[i, j];        
-    }
-    if (sum < minsum)
-    {
-        minsum = sum;
-        indexLine++;
-    }
+    Console.Write(output);
+    return int.Parse(Console.ReadLine());
 }
-
-Console.WriteLine("строка с наименьшей суммой елементов под номером: " + (indexLine) + ", с суммой елементов равной: " + (minsum));
 
 void FillArrayRandomNumbers(int[,] array)
 {
@@ -30,7 +13,7 @@ void FillArrayRandomNumbers(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i, j] = new Random().Next(0, 10);
+            array[i, j] = new Random().Next(1, 5); //Для увеличения размера чисел в матрицах поменять число 5 на большее
         }
     }
 }
@@ -48,3 +31,29 @@ void PrintArray(int[,] array)
         Console.WriteLine("");
     }
 }
+
+int size = InputInt("размерность матриц: ");
+int[,] matrixA = new int[size, size];
+int[,] matrixB = new int[size, size];
+FillArrayRandomNumbers(matrixA);
+FillArrayRandomNumbers(matrixB);
+int[,] matrixC = new int[size, size];
+
+for (int i = 0; i < size; i++)
+{
+    for (int j = 0; j < size; j++)
+    {
+        for (int k = 0; k < size; k++)
+        {
+            matrixC[i, j] = matrixC[i, j] + (matrixA[i, k] * matrixB[k, j]);
+        }
+    }
+}
+Console.WriteLine("Матрица - А");
+PrintArray(matrixA);
+Console.WriteLine();
+Console.WriteLine("Матрица - В");
+PrintArray(matrixB);
+Console.WriteLine();
+Console.WriteLine("Произведение матриц А*В");
+PrintArray(matrixC);
