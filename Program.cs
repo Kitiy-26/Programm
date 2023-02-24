@@ -1,19 +1,17 @@
-﻿// Задайте значение N. Напишите программу, которая выведет все натуральные числа в промежутке от N до 1. Выполнить с помощью рекурсии.
-int n = InputNumbers("Введите n: ");
-int count = 2;
-PrintNumber(n, count);
-Console.Write(1);
+﻿// Задайте значения M и N. Напишите программу, которая найдёт сумму натуральных элементов в промежутке от M до N.
+int m = InputInt("Введите M:");
+int n = InputInt("Введите N:");
+Console.WriteLine($"Сумма элементов от {m} до {n} = {CountNaturalSum(m, n)}");
 
-void PrintNumber(int n, int count)
+int InputInt(string output)
 {
-  if (count > n) return;
-  PrintNumber(n, count + 1);
-  Console.Write(count + ", ");
+    Console.Write(output);
+    return int.Parse(Console.ReadLine());
 }
 
-int InputNumbers(string input) 
+int CountNaturalSum(int m, int n)
 {
-  Console.Write(input);
-  int output = Convert.ToInt32(Console.ReadLine());
-  return output;
+    if (m == n)
+        return n;
+    return n + CountNaturalSum(m, n - 1);
 }
